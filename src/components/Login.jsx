@@ -52,7 +52,6 @@ const Login = () => {
               value={emailId}
               onChange={(e) => handleEmailChange(e)}
             />
-            {/* <p className="fieldset-label">Invalid Email ID</p> */}
           </fieldset>
           <fieldset className="fieldset w-[90%]">
             <legend className="fieldset-legend">Password: </legend>
