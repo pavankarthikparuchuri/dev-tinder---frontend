@@ -17,10 +17,14 @@
 - Login and see if your data is coming properly in the store
 - Navbar should update as soon as user logs in
 - Refactor code to add constants file + create a components folder
+- You should not be able to accessr routes without login
+- if token is not present, redirect user to login page
+- Logout
+- Profile
 
-Body
-NavBar
-Route=/ => Feed page
-Route=/login => Login
-Route=/connections => Connections
-Route=/profile => Profile
+  Body
+  NavBar
+  Route=/ => Feed page
+  Route=/login => Login
+  Route=/connections => Connections
+  Route=/profile => Profile
