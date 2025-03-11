@@ -18,18 +18,21 @@ const EditProfile = ({ userInfo }) => {
   const dispatch = useDispatch();
   const saveProfile = async () => {
     try {
-      const res = await axios.patch(
-        `${BASE_URL}/profile/edit`,
-        {
-          firstName,
-          lastName,
-          age,
-          gender,
-          about,
-          photoUrl,
-        },
-        { withCredentials: true }
+      let obj = {
+        firstName,
+        lastName,
+        age,
+        gender,
+        about,
+        photoUrl,
+      };
+      const filteredObj = Object.fromEntries(
+        Object.entries(obj).filter(([_, value]) => value !== "")
       );
+      console.log(filteredObj);
+      const res = await axios.patch(`${BASE_URL}/profile/edit`, filteredObj, {
+        withCredentials: true,
+      });
       dispatch(addUserInfo(res?.data?.data || null));
       setError("");
       setShowToast(true);

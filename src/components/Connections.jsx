@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect } from "react";
-import UserCard from "./UserCard";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnectionsInfo } from "../utils/connectionsSlice";
 const Connections = () => {
@@ -19,19 +18,27 @@ const Connections = () => {
   useEffect(() => {
     getConnections();
   }, []);
-  if (!userConnections.length) return <h2>No Connections Found!</h2>;
+  if (!userConnections.length)
+    return (
+      <h2 className="text-center font-bold text-4xl my-10">
+        No Connections Found!
+      </h2>
+    );
   return (
     <div className="text-center my-10">
       <h1 className="text-bold text-4xl">Connections</h1>
       <div className="flex flex-col items-center">
-        {userConnections.map((item) => {
+        {userConnections.map((item, index) => {
           const { firstName, lastName, photoUrl, age, gender, about } = item;
           return (
-            <div className="m-4 p-4 rounded-lg bg-base-300 flex w-1/2">
+            <div
+              className="m-4 p-4 rounded-lg bg-base-300 flex w-1/2"
+              key={index}
+            >
               <div>
                 <img
                   alt="photo"
-                  className="w-20 h-20 object-cover rounded-full"
+                  className="w-20 h-20 min-h-20 min-w-20 object-cover rounded-full"
                   src={photoUrl}
                 />
               </div>

@@ -25,7 +25,16 @@
 - Build the user card on feed
 - Edit profile feature
 - show toast message on save of the profile
-- See all my connections
+- New Page - See all my connections
+- New Page - See all the requests recieved
+- Feature - Accept/Reject Connection Request
+
+Remaining
+
+- Send/Receive the user card from feed
+- Signup New User
+- E2E Testing
+
   Body
   NavBar
   Route=/ => Feed page
