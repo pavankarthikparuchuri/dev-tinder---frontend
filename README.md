@@ -23,6 +23,9 @@
 - Profile
 - Get the feed and add the feed in the store
 - Build the user card on feed
+- Edit profile feature
+- show toast message on save of the profile
+- See all my connections
   Body
   NavBar
   Route=/ => Feed page

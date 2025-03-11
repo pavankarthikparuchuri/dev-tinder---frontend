@@ -21,18 +21,11 @@ const Feed = () => {
     if (!feedData) getFeed();
   }, []);
   return (
-    <div className="flex justify-center my-10">
-      <UserCard
-        userData={{
-          _id: "67c2ee2e729f071c85abadc3",
-          firstName: "Elon",
-          lastName: "Musk",
-          photoUrl: "https://geographyandyou.com/images/user-profile.png",
-          about: "This is a default value of a user",
-          skills: [],
-        }}
-      />
-    </div>
+    feedData?.length && (
+      <div className="flex justify-center my-10">
+        <UserCard userData={feedData[0]} />
+      </div>
+    )
   );
 };
 
