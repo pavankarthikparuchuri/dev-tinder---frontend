@@ -31,7 +31,6 @@
 
 Remaining
 
-- Send/Receive the user card from feed
 - Signup New User
 - E2E Testing
 

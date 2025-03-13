@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
-        <Link className="btn btn-ghost text-xl" to={"/"}>
+        <Link className="btn btn-ghost text-xl" to={data ? "/" : null}>
           👨‍💻DevTinder
         </Link>
       </div>
