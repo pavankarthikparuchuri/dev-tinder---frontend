@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnectionsInfo } from "../utils/connectionsSlice";
+import { BASE_URL } from "../utils/constants";
 const Connections = () => {
   const dispatch = useDispatch();
   const userConnections = useSelector((state) => state.connectionsSlice);
   const getConnections = async () => {
     try {
-      const data = await axios.get("http://localhost:7777/user/connections", {
+      const data = await axios.get(`${BASE_URL}/user/connections`, {
         withCredentials: true,
       });
       dispatch(addConnectionsInfo(data?.data?.data || []));

@@ -40,3 +40,11 @@ Remaining
   Route=/login => Login
   Route=/connections => Connections
   Route=/profile => Profile
+
+# Deployment
+
+- Singup on AWS
+- Launch instance
+- Modify permissions (chmod 400 <secret>.pem)
+- connected to the machine using ssh command (ssh -i "devTinder-Secret.pem" ubuntu@ec2-54-206-21-107.ap-southeast-2.compute.amazonaws.com)
+- install node version 22.13.1
