@@ -48,3 +48,48 @@ Remaining
 - Modify permissions (chmod 400 <secret>.pem)
 - connected to the machine using ssh command (ssh -i "devTinder-Secret.pem" ubuntu@ec2-54-206-21-107.ap-southeast-2.compute.amazonaws.com)
 - install node version 22.13.1
+- Git clone
+- Frontend:-
+  - npm i
+  - npm run build to create the production ready build
+  - we need nginx as that provides us an http web server where we can deploy our frontend application
+  - sudo apt update
+  - sudo apt install nginx
+  - sudo systemctl start nginx
+  - sudo systemctl enable nginx
+  - copy code from dist(build files) to /var/www/html/
+  - sudo scp -r dist/\* /var/www
+  - all ports are initially blocked in aws, our nginx server runs in port 80
+  - enable port 80 in the instance
+- Backend
+  - npm i
+  - allowed public ip of the ec2 instance to connect to the database on mongodb server
+  - npm start, if we are doing we need keep our terminal on forever for the server to be available
+  - installed pm2 which is a process manager(daemon process that manages the application 24 \* 7), npm install pm2 -g
+  - using pm2 we can start our backend server pm2 start npm -- start
+  - pm2 logs
+  - pm2 flush <name>, pm2 list, pm2 stop <name>,pm2 delete <name>
+  - pm2 start npm --name "devtinder-backend" -- start
+  - we will be using domainname/api for the backendserver, we should make the mapping in nginx config so that it will route to domainname:7777
+  - config nginx - /etc/nginx/sites-available/default
+  - restart nginx - sudo systemctl restart nginx
+
+frontend = http://3.27.162.47/
+backend = http://3.27.162.47:7777
+
+Domain name = devTinder.com => 3.27.162.47
+
+frontend = devTinder.com
+backend = devTinder.com:7777 => devTinder.com/api (proxy pass)
+
+# NGINX config:
+
+server_name 3.27.162.47
+location /api/ {
+proxy_pass http://localhost:7777/;
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection 'upgrade';
+proxy_set_header Host $host;
+proxy_cache_bypass $http_upgrade;
+}
