@@ -73,6 +73,7 @@ Remaining
   - we will be using domainname/api for the backendserver, we should make the mapping in nginx config so that it will route to domainname:7777
   - config nginx - /etc/nginx/sites-available/default
   - restart nginx - sudo systemctl restart nginx
+  - modify the base url in frontend repo to "/api"
 
 frontend = http://3.27.162.47/
 backend = http://3.27.162.47:7777
