@@ -94,3 +94,22 @@ proxy_set_header Connection 'upgrade';
 proxy_set_header Host $host;
 proxy_cache_bypass $http_upgrade;
 }
+
+# Adding a custom Domain name
+
+- purchased domain name from godaddy
+- signup on cloudflare and add a new domain name
+- change the nameservers on godaddy and point it to cloudflare
+- wait for sometime till your nameservers are updated ~15mins
+- DNS record: A domainname
+- enable ssl for website
+
+# Sending emails via ses
+
+- create a IAM user
+- give access to AmazonSESFullAccess
+- Amazon SES: Create an Identity
+- Verify your domain name
+- verify an email address
+- install aws sdk -v3
+- [code example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples)
