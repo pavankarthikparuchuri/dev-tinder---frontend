@@ -113,3 +113,16 @@ proxy_cache_bypass $http_upgrade;
 - verify an email address
 - install aws sdk -v3
 - [code example](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples)
+
+# scheduling cron jobs in Nodejs
+
+- installing node cron
+- learning about cron expression syntax - crontab.guru
+- schedule a job
+- date-fns
+- find all the unique emails who have got connection request in previous day
+- send email
+- explore queue mechanism to send bulk emails
+- amazon ses bulk emails
+- make send email function dynamic
+- bee-queue and bull package
