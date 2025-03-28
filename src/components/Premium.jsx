@@ -1,7 +1,30 @@
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Premium = () => {
+  const [isPremiumUser, setIsPremiumUser] = useState(false);
+  const [loading, setIsLoading] = useState(false);
+  const verifyPremiumUser = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get(`${BASE_URL}/premium/verify`, {
+        withCredentials: true,
+      });
+      if (res.data.isPremium) {
+        setIsPremiumUser(true);
+      }
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err.message);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    verifyPremiumUser();
+  }, []);
+
   const handleBuyClick = async (membershipType) => {
     try {
       const order = await axios.post(
@@ -32,6 +55,7 @@ const Premium = () => {
         theme: {
           color: "#F37254",
         },
+        handler: verifyPremiumUser,
       };
       const rzp = new window.Razorpay(options);
       rzp.open();
@@ -39,6 +63,15 @@ const Premium = () => {
       console.log(err);
     }
   };
+
+  if (isPremiumUser)
+    return (
+      <h2 className="text-center font-bold text-4xl my-10">
+        You are Already a Premium User!
+      </h2>
+    );
+  if (loading)
+    return <h2 className="text-center font-bold text-4xl my-10">Loading...</h2>;
   return (
     <div className="m-10">
       <div className="flex w-full">
