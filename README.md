@@ -126,3 +126,41 @@ proxy_cache_bypass $http_upgrade;
 - amazon ses bulk emails
 - make send email function dynamic
 - bee-queue and bull package
+
+# payment gateway
+
+- payment happens in two steps
+  - create order - /createOrder api
+  - payment verification - /verifyPayment api
+- we don't only use frontend to connect to razorpay, backend has a secret key to connect to razorpay
+
+# Payment Process
+
+- we won't be calling the razorpay apis directly from frontend for security purposes.
+- backend server would be interacting with the razorpay apis.
+- when user clicks on pay now button, frontend would be calling a create order api to the backend
+- the backend with the secret key would be calling the razorpay
+- we will be sending info like how much money the user is paying, currency like inr or dollar etc in the create order request to razorpay
+- the razorpay would be sending an orderid
+- the orderid is sent back to frontend
+- post getting the order id, a popup with the qr code gets opened with that orderid
+- after the payment, this payment service is provided by razorpay
+- razorpay uses webhooks to inform regarding the payment to the backend
+- razorpay would be sending the signature, paymentid to backend
+- backend verifies the payment
+- when the frontend calls the payment verify api, backend sends success/failure of payment as response
+
+# Razorpay payment gateway integration
+
+- [razorpay integration docs](https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#1-build-integration) -[razorpay github repo](https://github.com/razorpay/razorpay-node/tree/master/documents) -[verify webhook docs](https://razorpay.com/docs/webhooks/validate-test/) -[payment payload](https://razorpay.com/docs/webhooks/payloads/payments/)
+
+- signup on razorpay and complete kyc
+- created UI for premium page
+- creating an api for create order in backend
+- added key and secret in env file
+- initialize razorpay in utils
+- creating order on razorpay
+- create schema
+- saved the order in payments collection
+- make the API dynamic
+- setup razorpay webhook on your live api
