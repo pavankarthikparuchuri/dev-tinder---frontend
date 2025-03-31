@@ -49,23 +49,25 @@ const Requests = () => {
             fromUserId;
           return (
             <div
-              className="m-4 p-4 w-2/3 rounded-lg bg-base-300 flex items-center justify-between"
+              className="m-4 p-4 min-w-[630px] w-1/3  rounded-lg bg-base-300 flex items-center justify-between"
               key={_id}
             >
-              <div>
-                <img
-                  alt="photo"
-                  className="w-20 h-20  min-h-20 min-w-20  object-cover rounded-full"
-                  src={photoUrl}
-                />
-              </div>
-              <div className="text-left mx-4">
-                <h2 className="font-bold text-xl">
-                  {firstName + " " + lastName}
-                </h2>
-                {age && gender && <p>{age + "," + gender}</p>}
+              <div className="flex items-center gap-2">
+                <div>
+                  <img
+                    alt="photo"
+                    className="w-20 h-20  min-h-20 min-w-20  object-cover rounded-full"
+                    src={photoUrl}
+                  />
+                </div>
+                <div className="text-left mx-4">
+                  <h2 className="font-bold text-xl">
+                    {firstName + " " + lastName}
+                  </h2>
+                  {age && gender && <p>{age + "," + gender}</p>}
 
-                <p>{about}</p>
+                  <p>{about}</p>
+                </div>
               </div>
               <div>
                 <button

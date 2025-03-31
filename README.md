@@ -164,3 +164,24 @@ proxy_cache_bypass $http_upgrade;
 - saved the order in payments collection
 - make the API dynamic
 - setup razorpay webhook on your live api
+
+# Real Time Chat using Websocket(Socket.io)
+
+- web sockets are bi-directional, event based, low latency communication between client and server
+- built the ui for a chat window on /chat/:targetUserId
+- Setup socket.io in backend
+- npm i socket.io
+- setup frontend socket.io-client
+- create a function to create connection and return socket
+- emit for sending data and on for listening to events
+- on backed side, use http to create a connection and pass app router inside this
+- create an instance using the connection and whitelist the localhost
+- inside the instance, listen to the events and handle them
+- also create a schema for storing the chats
+- create an api to fetch the chats
+- feature to fix:- improve the ui
+- feature to fix:- fix security bug (should not be able to send message to the people who are not friends)
+- feature to fix:- add auth in sockets
+- feature to add:- show online status/add last seen
+- feature to add:- limit messages when fetching from DB
+- new project ideas:- tic tac toe, chess game
