@@ -58,7 +58,7 @@ Remaining
   - sudo systemctl start nginx
   - sudo systemctl enable nginx
   - copy code from dist(build files) to /var/www/html/
-  - sudo scp -r dist/\* /var/www
+  - sudo scp -r dist/\* /var/www/html
   - all ports are initially blocked in aws, our nginx server runs in port 80
   - enable port 80 in the instance
 - Backend
